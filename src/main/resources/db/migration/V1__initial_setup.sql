@@ -30,3 +30,16 @@ CREATE TABLE IF NOT EXISTS product (
 );
 
 CREATE INDEX IF NOT EXISTS product_supplier_id_index ON product (supplier_id);
+
+--- Seed Dummy Data
+INSERT INTO supplier ("name", "contact_information") VALUES
+('supplier 2', 'contact'),
+('supplier 3', 'contact'),
+('supplier 4', 'contact');
+
+
+INSERT INTO product ("id", "name", "supplier_id", "price", "stock_quantity", "images") VALUES
+('47cb49df-df6e-4231-b6c2-e7916c267efc', 'Product 1', 1, 14500.00, 15, '{image1,image1}'),
+('57bb49df-df6e-4231-b6c2-e7916c267efc', 'Product 2', 3, 1500.00, 1650, '{image2,image3}'),
+('67bb49df-df6e-4231-b6c2-e7916c267efc', 'Product 3', 2, 180.00, 150, '{image3,image4}'),
+('27bb49df-df6e-4231-b6c2-e7916c267efe', 'Product 4', 2, 2510.00, 190, '{image5,image5}');

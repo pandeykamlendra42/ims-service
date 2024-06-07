@@ -91,6 +91,10 @@ public class ProductService {
       product.setPrice(productRequest.getPrice());
     }
     if (!ObjectUtils.isEmpty(productRequest.getImages())) {
+      if (productRequest.getImages().size() > MAX_ALLOWED_IMAGES) {
+        log.error("Per product image limit exceeded");
+        throw new ApiErrorException("Only " + MAX_ALLOWED_IMAGES + " images are allowed per product", HttpStatus.UNPROCESSABLE_ENTITY);
+      }
       product.setImages(productRequest.getImages());
     }
     product = productRepository.save(product);
